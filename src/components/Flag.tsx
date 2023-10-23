@@ -1,16 +1,16 @@
 import React from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
+import { CountryData } from '../assets/module'
 
+interface Props  {
+  card: CountryData
+}
 
-const Flag:React.FC = ({card}) => {
- const { userId } = useParams();
- console.log(userId);
- 
-  
-  return (
- <NavLink to='/'>
-  <div className="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer"  >
-        <img className="w-auto" src={card.flags.svg} alt={`flag ${card.name}`}/>
+const Flag:React.FC<Props> = ({card}) => {
+return (
+ <NavLink to={`/description/${card.name}`}>
+  <div className="max-w-sm rounded overflow-hidden shadow-lg  " key={Number(card.numericCode)} >
+        <img className="w-auto cursor-pointer" src={card.flags.svg} alt={`flag ${card.name}`}/>
         <div className="px-6 py-4">
           <h2 className="font-bold text-lg mb-2">{card.name}</h2>
           <ul className="mt-3">
