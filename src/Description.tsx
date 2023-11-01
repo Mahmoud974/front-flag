@@ -2,7 +2,7 @@
 import { NavLink, useParams } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
-import db from './assets/db/db.json'
+import db from './assets/db/db'
 
 
 const Description = () => {

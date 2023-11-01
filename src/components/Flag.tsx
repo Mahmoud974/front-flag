@@ -3,7 +3,7 @@ import { NavLink} from 'react-router-dom'
 import { CountryData } from '../assets/module'
 
 interface Props  {
-  card: CountryData
+  card: CountryData 
 }
 
 const Flag:React.FC<Props> = ({card}) => {

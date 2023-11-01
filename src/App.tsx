@@ -1,19 +1,20 @@
 import Navbar from "./components/Navbar"
-import db from './assets/db/db.json'
-import { useState } from "react";
+import db from '/Users/manuscrit974gmail.com/Desktop/flag-api/src/assets/db/db.json'
+import {  useState } from "react";
 import Flag from "./components/Flag";
+import { CountryData } from "./assets/module";
 
 const App = () => {
-const [data] = useState(db)
 const [continent, setContinent] = useState<string>('')
 const [country, setCountry] = useState<string>('')
 const [darkMode, setDarkMode] = useState<boolean>(false);
- 
+
+
  return (
     <div>
-      <Navbar darkMode={darkMode}  setDarkMode={setDarkMode}/>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
       <div className="flex md:flex-row flex-col justify-between md:mt-12  max-w-6xl mx-auto px-5 md:px-0 ">
-        <input type="search"  placeholder="🔎 Search for a country..." className={ ` ${darkMode ? 'bg-black border-black  ': ` border `} mt-12 lg:mt-0 px-16 h-12 rounded-md  `} onChange={(e) => setCountry(e.currentTarget.value)}/>
+        <input type="search"  placeholder="🔎 Search for a country..." className={ ` ${darkMode ? 'bg-black border-black': `border`} mt-12 lg:mt-0 px-16 h-12 rounded-md`} onChange={(e) => setCountry(e.currentTarget.value)}/>
 
       {/* Dropdown */}
       <div className="hs-dropdown relative inline-flex md:mt-0 mt-8">
@@ -44,9 +45,8 @@ const [darkMode, setDarkMode] = useState<boolean>(false);
       </div>
       </div>
        <div className="max-w-6xl max-auto grid md:grid-cols-4 md:px-0 px-8 mx-auto gap-12 mt-12">
-      {
       
-        data?.filter(item => Array.isArray(item.borders)).filter((item) =>  country ? item.name  === country : item.name ).filter((item) => continent ? item.region === continent : item.region).map((card, index:number) =><Flag card={card} key={index}/>)
+      {db?.filter(item => Array.isArray(item.borders)).filter((item) =>  country ? item.name  === country : item.name ).filter((item) => continent ? item.region === continent : item.region).map((card:CountryData, index:number) =><Flag card={card} key={index}/>)
       }
       </div>
     </div>
