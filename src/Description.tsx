@@ -2,15 +2,17 @@
 import { NavLink, useParams } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
-import db from './assets/db/db'
+import { CountryData } from "./assets/module";
+import db from '/Users/manuscrit974gmail.com/Desktop/flag-api/src/assets/db/db.json';
+
 
 
 const Description = () => {
-const [data] = useState(db)
+
 
  const [darkMode, setDarkMode] = useState<boolean>(false);
      const {id} = useParams()
-    const findFlag = data.find((ok) => ok.name=== id)
+    const findFlag = db.find((item:CountryData) => item.name=== id)
 
   return (
    <>
